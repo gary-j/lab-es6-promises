@@ -88,7 +88,58 @@
 // ...
 
 // Iteration 3 using async/await
+let leBroccoli = document.querySelector("#broccoli")
+
+async function makeBroccoli(i){
+    for(let i = 0; i<broccoli.length; i++){
+    // await obtainInstruction('broccoli', 0)
+    leBroccoli.innerHTML+= `<li>${await obtainInstruction('broccoli', i)}</li>`
+  }
+  leBroccoli.innerHTML+=`<li>Broccoli is ready!</li>`;
+}
+
+makeBroccoli()
+
+
 // ...
 
+// Bonus 1 - Remove .hidden class from all images
+
+let allImages = document.querySelectorAll('img');
+
+async function displayImages(){
+  allImages.forEach(image => {
+    console.log(image, 'IMAGE IMAGE')
+    image.removeAttribute('hidden');
+  })
+}
+
+displayImages()
+
 // Bonus 2 - Promise all
+let lesBrussels = document.querySelector('#brusselsSprouts');
+
+let brussels = [
+  obtainInstruction("brusselsSprouts", 0),
+  obtainInstruction("brusselsSprouts", 1),
+  obtainInstruction("brusselsSprouts", 2),
+  obtainInstruction("brusselsSprouts", 3),
+  obtainInstruction("brusselsSprouts", 4),
+  obtainInstruction("brusselsSprouts", 5),
+  obtainInstruction("brusselsSprouts", 6),
+  obtainInstruction("brusselsSprouts", 7)
+
+]
+
+Promise.all(brussels).then( (instruction) =>{
+console.log('VALUES');
+instruction.forEach(item => {
+
+  lesBrussels.innerHTML += `<li>${item}</li>`
+})
+lesBrussels.innerHTML+=`<li>Brussels Sprouts are ready !</li>`
+
+}
+
+ );
 // ...
